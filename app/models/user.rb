@@ -12,4 +12,12 @@ class User < ActiveRecord::Base
   def full_name
     first_name + " " + last_name
   end
+
+  def role?(base_role)
+    role == base_role.to_s
+  end
+
+  def status?(base_status)
+    status == base_status.to_s
+  end
 end

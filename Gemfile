@@ -16,6 +16,7 @@ gem 'faker', '~> 1.4.2'
 gem 'devise', '~> 3.2.4'
 gem 'figaro'
 gem 'redcarpet'
+gem 'pundit'
 
 group :production do
   gem 'pg'

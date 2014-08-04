@@ -3,7 +3,9 @@
     <h1>All of the wikis</h1>
   </div>
 
-  <%= link_to "Post a new wiki", new_wiki_path, class: "btn btn-primary" %>
+  <% if policy(Wiki.new).create? %>
+    <%= link_to "Post a new wiki", new_wiki_path, class: "btn btn-primary" %>
+  <% end %>
 
   <hr>
 
@@ -15,7 +17,9 @@
         <div class="meta">
           <%= link_to time_ago_in_words(wiki.created_at) + " ago", wiki %>
           <span class="admin">
-          | <%= link_to "Edit", edit_wiki_path(wiki) %> | 
+            <% if policy(@wiki).edit? %>
+            | <%= link_to "Edit", edit_wiki_path(wiki) %> | 
+            <% end %>
             <%= link_to "Delete", wiki, method: :delete, data: {confirm: "Are You Sure?"} %>
           </span>
         </div>

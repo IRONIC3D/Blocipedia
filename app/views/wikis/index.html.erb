@@ -11,7 +11,7 @@
     <div class="wiki row">
       <div class="spanwiki">
         <strong></strong>
-        <p><%= wiki.title %></p>
+        <h3><%= markdown wiki.title %></h3> 
         <div class="meta">
           <%= link_to time_ago_in_words(wiki.created_at) + " ago", wiki %>
           <span class="admin">

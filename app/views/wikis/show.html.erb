@@ -1,15 +1,9 @@
 <div class="container">
   <p id="notice"><%= notice %></p>
 
-  <p>
-    <b>Title:</b>
-    <%= @wiki.title %>
-  </p>
+   <h1><%= markdown @wiki.title %></h1> 
 
-  <p>
-    <b>Content:</b>
-    <%= @wiki.body %>
-  </p>
+   <p><%= markdown @wiki.body %></p>
 
 
   <%= link_to 'Edit', edit_wiki_path(@wiki) %> |

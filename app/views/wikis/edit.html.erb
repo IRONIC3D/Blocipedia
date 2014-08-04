@@ -1,2 +1,8 @@
-<h1>Wikis#edit</h1>
-<p>Find me in app/views/wikis/edit.html.erb</p>
+<div class="container">
+  <h1>Editing Wiki</h1>
+
+  <%= render 'form' %>
+
+  <%= link_to 'Show', @wiki %> |
+  <%= link_to 'Back', wikis_path %>
+</div>

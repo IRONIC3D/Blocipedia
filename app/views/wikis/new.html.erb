@@ -1,2 +1,10 @@
-<h1>Wikis#new</h1>
-<p>Find me in app/views/wikis/new.html.erb</p>
+<div class="container">
+  <h1>New Wiki</h1>
+  <div class="row-fluid">
+    <div class="span4 well">
+      <%= render 'form' %>
+    </div>
+  </div>
+
+  <%= link_to 'Back', wikis_path %>
+</div>

@@ -17,6 +17,7 @@ gem 'devise', '~> 3.2.4'
 gem 'figaro'
 gem 'redcarpet'
 gem 'pundit'
+gem 'will_paginate', '~> 3.0.5'
 
 group :production do
   gem 'pg'

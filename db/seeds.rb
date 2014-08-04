@@ -25,7 +25,7 @@ admin = User.new(
    password:    'helloworld',
    role:        'admin'
  )
- admin.save
+admin.save
  
  # Create a moderator
  moderator = User.new(

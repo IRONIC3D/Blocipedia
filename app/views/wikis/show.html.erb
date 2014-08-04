@@ -5,6 +5,10 @@
 
    <p><%= markdown @wiki.body %></p>
 
+    <p>
+      <b>Name:</b>
+      <%= @wiki.user.full_name %>
+      </p>
 
   <%= link_to 'Edit', edit_wiki_path(@wiki) %> |
   <%= link_to 'Back', wikis_path %>

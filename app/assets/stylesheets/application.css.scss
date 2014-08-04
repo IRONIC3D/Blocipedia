@@ -1,3 +1,28 @@
 @import "bootstrap";
 
 body { padding-top: 70px; }
+
+.wiki {
+	border-bottom: solid 1px #CCC;
+	padding: 5px 0px;
+}
+
+.wiki p {
+	margin: 4px 0;
+}
+
+.wiki.hover {
+	background: #FAFAFA;
+}
+
+.wiki .admin {
+	display: none;
+}
+
+.wiki.hover .admin {
+	display: inline;
+}
+
+.spanWiki {
+	margin-left: 10px;
+}

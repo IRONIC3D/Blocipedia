@@ -1,0 +1,17 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <b>Title:</b>
+    <%= @wiki.title %>
+  </p>
+
+  <p>
+    <b>Content:</b>
+    <%= @wiki.body %>
+  </p>
+
+
+  <%= link_to 'Edit', edit_wiki_path(@wiki) %> |
+  <%= link_to 'Back', wikis_path %>
+</div>

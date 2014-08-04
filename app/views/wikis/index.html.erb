@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="page-header">
+    <h1>All of the wikis</h1>
+  </div>
+
+  <%= link_to "Post a new wiki", new_wiki_path, class: "btn btn-primary" %>
+
+  <hr>
+
+  <% @wikis.each do |wiki| %>
+    <div class="wiki row">
+      <div class="spanwiki">
+        <strong></strong>
+        <p><%= wiki.title %></p>
+        <div class="meta">
+          <%= link_to time_ago_in_words(wiki.created_at) + " ago", wiki %>
+          <span class="admin">
+          | <%= link_to "Edit", edit_wiki_path(wiki) %> | 
+            <%= link_to "Delete", wiki, method: :delete, data: {confirm: "Are You Sure?"} %>
+          </span>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

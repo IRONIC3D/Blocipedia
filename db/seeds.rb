@@ -18,6 +18,34 @@ users = User.all
   )
 end
 
+admin = User.new(
+   first_name:  'Iyad',
+   last_name:   'Horani',
+   email:       'i3d@ironic3d.com',
+   password:    'helloworld',
+   role:        'admin'
+ )
+ admin.save
+ 
+ # Create a moderator
+ moderator = User.new(
+   first_name:  'Moderator',
+   last_name:   'User',
+   email:       'moderator@example.com', 
+   password:    'helloworld',
+   role:        'moderator'
+ )
+ moderator.save
+ 
+ # Create a member
+ member = User.new(
+   first_name:  'Regular',
+   last_name:   'User',
+   email:       'member@example.com',
+   password:    'helloworld',
+ )
+ member.save
+
 puts "Seed finished"
 puts "#{User.count} users created"
 puts "#{Wiki.count} wikis created"

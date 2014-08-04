@@ -44,6 +44,7 @@ class WikisController < ApplicationController
 
   def destroy
     @wiki = Wiki.find(params[:id])
+    authorize @wiki
     @wiki.destroy
     redirect_to wikis_path
   end

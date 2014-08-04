@@ -17,10 +17,10 @@
         <div class="meta">
           <%= link_to time_ago_in_words(wiki.created_at) + " ago", wiki %>
           <span class="admin">
-            <% if policy(@wiki).edit? %>
-            | <%= link_to "Edit", edit_wiki_path(wiki) %> | 
-            <% end %>
+            <% if policy(wiki).edit? %>
+          | <%= link_to "Edit", edit_wiki_path(wiki) %> | 
             <%= link_to "Delete", wiki, method: :delete, data: {confirm: "Are You Sure?"} %>
+            <% end %>
           </span>
         </div>
       </div>

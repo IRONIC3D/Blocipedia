@@ -1,0 +1,16 @@
+<div class="dialog demo-dialog">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "form-inline"}) do |f| %>
+    <div class="form-group">
+      <%= f.label :email, class: "sr-only" %>
+      <%= f.email_field :email, class: 'form-control flat', placeholder: "Enter your email address" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password, class: "sr-only" %>
+      <%= f.password_field :password, autocomplete: "off", class: 'form-control flat', placeholder: "Enter a unique password" %>
+    </div>
+
+    <%= f.button "Login", class: 'btn btn-primary btn-wide' %>
+    <%= link_to "Register", new_user_registration_path, class: "btn btn-danger btn-wide" %>
+  <% end %>
+</div>

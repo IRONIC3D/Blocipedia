@@ -13,6 +13,7 @@ gem 'spring',        group: :development
 
 gem 'bootstrap-sass', '~> 3.2.0.1'
 gem 'faker', '~> 1.4.2'
+gem 'devise', '~> 3.2.4'
 
 group :production do
   gem 'pg'

@@ -4,6 +4,7 @@ class WikisController < ApplicationController
     @wiki = Wiki.new
     @publish_status = { Draft: 1, Publish: 2, Scheduled: 3 }
     # authorize @wikis
+    authorize @wiki, :new?
   end
 
   def show

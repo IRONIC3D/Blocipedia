@@ -8,6 +8,6 @@ class WikiPolicy < ApplicationPolicy
   end
 
   def create?
-    user.present? && user.role?(:admin)
+    user.present?
   end
 end

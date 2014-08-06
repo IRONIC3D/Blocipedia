@@ -5,9 +5,9 @@
 
   <% if policy(Wiki.new).create? %>
     <%= link_to "Post a new wiki", new_wiki_path, class: "btn btn-primary" %>
+    <hr>
   <% end %>
 
-  <hr>
 
   <% @wikis.each do |wiki| %>
     <div class="wiki row">

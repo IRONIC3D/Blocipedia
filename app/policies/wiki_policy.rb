@@ -3,6 +3,10 @@ class WikiPolicy < ApplicationPolicy
     true
   end
 
+  def show?
+    !(record.private?) || user.present? 
+  end
+
   def create?
     user.present? && user.role?(:admin)
   end

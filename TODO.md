@@ -16,3 +16,39 @@ class CollborateWiki < ActiveRecord::Base
   belongs_to :User
   belongs_to :Wiki
 end
+
+--------------------------------------
+
+class User < ActiveRecord::Base
+  has_many :wikis, through: :collaborators
+end
+
+class Wiki < ActiveRecord::Base
+  belongs_to :original_user, class_name: "User", foreign_key: "user_id"
+  has_many :users, through: :collaborators
+end
+
+class Collaborator < ActiveRecord::Base
+  belongs_to :User
+  belongs_to :Wiki
+end
+
+---------------------------------------
+
+user:
+  :first_name,
+  :last_name,
+  :email,
+  :password,
+  :role,
+  :status
+
+wiki:
+  :title,
+  :body
+  :user_id
+
+collaborator:
+  :user_id
+  :wiki_id
+

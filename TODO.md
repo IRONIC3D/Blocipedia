@@ -51,4 +51,3 @@ wiki:
 collaborator:
   :user_id
   :wiki_id
-

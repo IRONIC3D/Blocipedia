@@ -11,7 +11,17 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
+//= require bootstrap-select
+//= require bootstrap-switch
+//= require flatui-checkbox
+//= require flatui-radio
+//= require holder
+//= require flatui-fileinput
+//= require jquery.tagsinput
+//= require jquery.placeholder
+//= require startup-kit
 //= require_tree .

@@ -7,6 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <%= render "welcome/login_modal" %>
+  <%= render "welcome/sign_up_modal" %>
+
   <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -32,7 +35,7 @@
               <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
             <% else %>
               <li><%= link_to "Sign in", "#login", "data-toggle" => "modal", "data-target" => "#login" %></li>
-              <li><%= link_to "Sign up", new_user_registration_path %></li>
+              <li><%= link_to "Sign up", "#sign_up", "data-toggle" => "modal", "data-target" => "#sign_up" %></li>
             <% end %>
           </li>
         </ul>
@@ -59,15 +62,32 @@
    <% end %>
   </div>
 
-  <%= render "welcome/login_modal" %>
+  
 
   <%= yield %>
 
-  <script type="text/javascript">
-    $(function () { 
-      $("#login").modal({show:false});
-    });  
-  </script>
+  <div class="bottom-menu bottom-menu-inverse">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-2 navbar-brand">
+              <a href="#fakelink">Blocipedia</a>
+            </div>
+
+            <div class="col-md-8">
+              <ul class="bottom-links">
+              </ul>
+            </div>
+
+            <div class="col-md-2">
+              <ul class="bottom-icons">
+                <li><a href="#fakelink" class="fui-pinterest"></a></li>
+                <li><a href="#fakelink" class="fui-facebook"></a></li>
+                <li><a href="#fakelink" class="fui-twitter"></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
 
 </body>
 </html>

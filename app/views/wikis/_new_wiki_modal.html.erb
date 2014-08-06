@@ -1,0 +1,61 @@
+<div class="modal fade" id="new_wiki" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Post a new Wiki</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for @wiki do |f| %>
+          <% if @wiki.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@wiki.errors.count, "error") %> prohibited this wiki from being saved:</h2>
+
+              <ul>
+              <% @wiki.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <%= form_group_tag(@wiki.errors[:title]) do %>
+            <%= f.label :title %>
+            <%= f.text_field :title, autofocus: true, class: 'form-control' %>
+          <% end %>
+
+          <%= form_group_tag(@wiki.errors[:body]) do %>
+            <%= f.label :body %>
+            <%= f.text_area :body, rows: 5, class: "form-control" %>
+          <% end %>
+
+          <%= form_group_tag(@wiki.errors[:private]) do %>
+            <%= f.label :private, class: 'checkbox' do %>
+              <%= f.check_box :private %> Make this Wiki private?
+            <% end %>
+          <% end %>
+
+          <!--<%= form_group_tag(@wiki.errors[:scheduled]) do %>
+            <div class="col-sm-2">
+              <%= f.label :publish_type, as: "Type of Publish" %>
+            </div>
+            <div class="col-sm-10">
+              <%= f.select :publish_type, @publish_status, prompt: true, class: "form-control" %>
+            </div>
+          <% end %>
+          
+          <% f.hidden_field :draft, value: "true" %> -->
+
+          <div class="form-actions">
+            <%= f.submit :Save, class: "btn btn-lg btn-primary btn-block" %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="modal-footer">
+        <%= link_to 'Cancel', wikis_path %>
+      </div>
+    </div>
+  </div>
+</div>
+

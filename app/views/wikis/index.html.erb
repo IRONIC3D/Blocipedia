@@ -1,10 +1,13 @@
+<%= render "wikis/new_wiki_modal" %>
+<%= render "wikis/edit_wiki_modal" %>
+
 <div class="container">
   <div class="page-header">
     <h1>All of the wikis</h1>
   </div>
 
   <% if policy(Wiki.new).create? %>
-    <%= link_to "Post a new wiki", new_wiki_path, class: "btn btn-primary" %>
+    <%= link_to "Post a new wiki", "#new_wiki", "data-toggle" => "modal", "data-target" => "#new_wiki", class: "btn btn-hg btn-primary btn-block" %>
     <hr>
   <% end %>
 
@@ -18,7 +21,7 @@
           <%= link_to time_ago_in_words(wiki.created_at) + " ago", wiki %>
           <span class="admin">
             <% if policy(wiki).edit? %>
-          | <%= link_to "Edit", edit_wiki_path(wiki) %> | 
+          | <%= link_to edit_wiki_path(wiki), "#edit_wiki", "data-toggle" => "modal", "data-target" => "#edit_wiki" %> | 
             <%= link_to "Delete", wiki, method: :delete, data: {confirm: "Are You Sure?"} %>
             <% end %>
           </span>

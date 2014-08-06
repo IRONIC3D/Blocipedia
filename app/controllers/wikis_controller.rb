@@ -1,6 +1,8 @@
 class WikisController < ApplicationController
   def index
     @wikis = Wiki.visible_to(current_user).paginate(page: params[:page], per_page: 5)
+    @wiki = Wiki.new
+    @publish_status = { Draft: 1, Publish: 2, Scheduled: 3 }
     authorize @wikis
   end
 
@@ -11,7 +13,6 @@ class WikisController < ApplicationController
 
   def new
     @wiki = Wiki.new
-    @publish_status = { Draft: 1, Publish: 2, Scheduled: 3 }
     authorize @wiki
   end
 
@@ -61,18 +62,18 @@ class WikisController < ApplicationController
   end
 
   def edit
-    @wiki = Wiki.find(params[:id])
-    authorize @wiki
+    @wiki_edit = Wiki.find(params[:id])
+    authorize @wiki_edit
   end
 
   def update
-    @wiki = Wiki.find(params[:id])
+    @wiki_edit = Wiki.find(params[:id])
 
-    authorize @wiki
+    authorize @wiki_edit
 
-    if @wiki.update_attributes(wiki_params)
+    if @wiki_edit.update_attributes(wiki_params)
       flash[:notice] = "Wiki was updated succefully"
-      redirect_to @wiki
+      redirect_to @wiki_edit
     else
       flash[:error] = "There was an error saving the wiki. Please try again"
       render :edit

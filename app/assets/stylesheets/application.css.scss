@@ -1,4 +1,7 @@
 @import "bootstrap";
+@import "flat_ui";
+@import "demo";
+@import "ui-kit-styles";
 
 body { padding-top: 70px; }
 
@@ -25,4 +28,13 @@ body { padding-top: 70px; }
 
 .spanWiki {
 	margin-left: 10px;
+}
+
+footer {
+bottom: 0;
+
+}
+
+.jumbotron {
+	text-align: center;
 }

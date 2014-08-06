@@ -19,6 +19,7 @@ gem 'figaro'
 gem 'redcarpet'
 gem 'pundit'
 gem 'will_paginate', '~> 3.0.5'
+gem 'stripe'
 
 group :production do
   gem 'pg'

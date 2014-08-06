@@ -3,7 +3,7 @@ class WikisController < ApplicationController
     @wikis = Wiki.visible_to(current_user).paginate(page: params[:page], per_page: 5)
     @wiki = Wiki.new
     @publish_status = { Draft: 1, Publish: 2, Scheduled: 3 }
-    authorize @wikis
+    # authorize @wikis
   end
 
   def show

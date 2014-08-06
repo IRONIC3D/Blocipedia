@@ -9,8 +9,4 @@ class Wiki < ActiveRecord::Base
   validates :body, length: { minimum: 20 }, presence: true
   validates :user, presence: true
 
-  def publish_settings
-    type_of_publish = []
-    type_of_publish << [draft: draft] << [publish: publish] << [scheduled: scheduled]
-  end
 end

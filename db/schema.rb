@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140806043137) do
+ActiveRecord::Schema.define(version: 20140806064141) do
 
   create_table "users", force: true do |t|
     t.string   "first_name"
@@ -45,10 +45,11 @@ ActiveRecord::Schema.define(version: 20140806043137) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.boolean  "private",    default: false
+    t.boolean  "private",      default: false
     t.boolean  "publish"
     t.boolean  "draft"
     t.datetime "scheduled"
+    t.integer  "publish_type"
   end
 
   add_index "wikis", ["draft"], name: "index_wikis_on_draft"

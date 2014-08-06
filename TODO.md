@@ -20,11 +20,14 @@ end
 --------------------------------------
 
 class User < ActiveRecord::Base
+  # has_many :collaborators
+  # has_many :original_wikis, class_name: "Wiki", foreign_key: "wiki_id"
   has_many :wikis, through: :collaborators
 end
 
 class Wiki < ActiveRecord::Base
   belongs_to :original_user, class_name: "User", foreign_key: "user_id"
+  # has_many :collaborators
   has_many :users, through: :collaborators
 end
 

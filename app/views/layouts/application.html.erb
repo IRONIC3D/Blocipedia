@@ -31,7 +31,7 @@
               <li><%= link_to "Hello #{current_user.first_name}", edit_user_registration_path %></li>
               <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
             <% else %>
-              <li><%= link_to "Sign in", new_user_session_path %></li>
+              <li><%= link_to "Sign in", "#login", "data-toggle" => "modal", "data-target" => "#login" %></li>
               <li><%= link_to "Sign up", new_user_registration_path %></li>
             <% end %>
           </li>
@@ -58,8 +58,16 @@
      </div>
    <% end %>
   </div>
-  
+
+  <%= render "welcome/login_modal" %>
+
   <%= yield %>
+
+  <script type="text/javascript">
+    $(function () { 
+      $("#login").modal({show:false});
+    });  
+  </script>
 
 </body>
 </html>

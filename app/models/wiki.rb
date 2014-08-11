@@ -3,6 +3,8 @@ class Wiki < ActiveRecord::Base
   has_many :collaborators
   has_many :users, through: :collaborators
 
+  accepts_nested_attributes_for :collaborators, allow_destroy: true
+
   default_scope { order('created_at DESC') }
 
   scope :visible_to, -> (user) { user ? all : where(private: false) }

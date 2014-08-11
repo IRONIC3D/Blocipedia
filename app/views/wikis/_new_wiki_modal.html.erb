@@ -35,6 +35,13 @@
             <% end %>
           <% end %>
 
+          <%= form_group_tag(@wiki.errors[:private]) do %>
+            <%= f.label "Collaborate with" %>
+            <%= f.fields_for :collaborators do |builder| %>
+              <%= builder.collection_select :user_id, User.where.not(id: current_user.id), :id, :full_name, { prompt: "" } %>
+            <% end %>
+          <% end %>
+
           <!--<%= form_group_tag(@wiki.errors[:scheduled]) do %>
             <div class="col-sm-2">
               <%= f.label :publish_type, as: "Type of Publish" %>

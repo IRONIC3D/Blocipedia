@@ -3,6 +3,9 @@ class WikisController < ApplicationController
     @wikis = Wiki.visible_to(current_user).paginate(page: params[:page], per_page: 5)
     @wiki = Wiki.new
     @publish_status = { Draft: 1, Publish: 2, Scheduled: 3 }
+    @users = User.all
+    @wiki.collaborators.build # The more I do the more collaborators
+
     # authorize @wikis
     authorize @wiki, :new?
   end
@@ -14,47 +17,18 @@ class WikisController < ApplicationController
 
   def new
     @wiki = Wiki.new
+
     authorize @wiki
   end
 
   def create
+    puts "***#{params.to_yaml}"
     @wiki = current_user.original_wikis.build(wiki_params)
-
-    puts "******************************"
-    puts params[:wiki][:publish_type]
-    puts "-------------------------------"
 
     authorize @wiki
 
-    if (params[:wiki][:publish_type] == 1)
-      @wiki.draft = true
-      params[:wiki][:draft] = true
-    elsif (params[:wiki][:publish_type] == 2)
-      @wiki.publish = true
-      params[:wiki][:publish] = true
-    elsif (params[:wiki][:publish_type] == 3)
-      @wiki.scheduled = true
-      params[:wiki][:scheduled] = true
-    end
-        
-    puts "******************************"
-    puts "#{@wiki}"
-    puts "-------------------------------"
-
     if @wiki.save
-      if (params[:wiki][:publish_type] == 1)
-        @wiki.update_attributes(draft: true)
-      elsif (params[:wiki][:publish_type] == 2)
-        @wiki.update_attributes(publish: true)
-      elsif (params[:wiki][:publish_type] == 3)
-        @wiki.update_attributes(scheduled: true)
-      end
       flash[:notice] = "Wiki was saved"
-
-      puts "******************************"
-      puts "#{@wiki.draft}"
-      puts "-------------------------------"
-
       redirect_to @wiki
     else
       flash[:error] = "There was an error saving the wiki. Please try again"
@@ -63,8 +37,9 @@ class WikisController < ApplicationController
   end
 
   def edit
-    @wiki_edit = Wiki.find(params[:id])
-    authorize @wiki_edit
+    puts "***#{params.to_yaml}"
+    @wiki = Wiki.find(params[:id])
+    authorize @wiki
   end
 
   def update
@@ -98,6 +73,6 @@ class WikisController < ApplicationController
   private
 
   def wiki_params
-    params.require(:wiki).permit(:title, :body, :private, :publish, :draft, :scheduled, :publish_type)
+    params.require(:wiki).permit(:title, :body, :private, :publish, :draft, :scheduled, :publish_type, collaborators_attributes: [:id, :user_id])
   end
 end

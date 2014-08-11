@@ -5,7 +5,11 @@
 
     <p>
       <b>Name:</b>
-      <%= @wiki.user.full_name %>
+      <%= @wiki.original_user.full_name %>
+      </p>
+
+      <b>Collaborator:</b>
+      <%= @wiki.users.map { |u| u.full_name}.join(", ") %>
       </p>
 
   <%= link_to 'Edit', edit_wiki_path(@wiki) %> |

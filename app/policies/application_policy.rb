@@ -23,6 +23,7 @@ class ApplicationPolicy
   end
 
   def update?
+    # TODO: Correct edit for current user
     user.present? && (record.user == user || user.role?(:admin))
   end
 
@@ -35,8 +36,8 @@ class ApplicationPolicy
   end
 
   def scope
-    # Pundit.policy_scope!(user, record.class)
-    record.class
+    Pundit.policy_scope!(user, record.class)
+    # record.class
   end
 end
 

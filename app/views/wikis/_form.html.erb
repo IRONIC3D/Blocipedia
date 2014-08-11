@@ -39,14 +39,6 @@
       <% end %>
   <% end %>
 
-  <%= form_group_tag(@wiki.errors[:scheduled]) do %>
-    <div class="col-sm-2">
-      <%= f.label :publish_type, as: "Type of Publish" %>
-    </div>
-    <div class="col-sm-10">
-      <%= f.select :publish_type, @publish_status, prompt: true, class: "form-control" %>
-    </div>
-  <% end %>
   
   <% f.hidden_field :draft, value: "true" %>
 

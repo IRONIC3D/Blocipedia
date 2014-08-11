@@ -20,8 +20,9 @@
         <div class="meta">
           <%= link_to time_ago_in_words(wiki.created_at) + " ago", wiki %>
           <span class="admin">
+            <!-- TODO: Make the edit modal open with the selected wiki -->
             <% if policy(wiki).edit? %>
-          | <%= link_to edit_wiki_path(wiki), "#edit_wiki", "data-toggle" => "modal", "data-target" => "#edit_wiki" %> | 
+          | <%= link_to "Edit", edit_wiki_path(wiki), "data-toggle" => "modal", "data-target" => "#edit_wiki" %> | 
             <%= link_to "Delete", wiki, method: :delete, data: {confirm: "Are You Sure?"} %>
             <% end %>
           </span>

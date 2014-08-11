@@ -25,4 +25,16 @@ module ApplicationHelper
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
   end
+
+  def display_base_errors resource
+    return '' if(resource.errors.empty?) or (resource.errors[:base].empty?)
+    message = resource.errors[:base].map { |msg| content_tag(:p, msg) }.join
+    html = <<-HTML
+      <div class="alert alert-error alert-bloc">
+        <button type="buton" class="close" data-dismiss="alert">&#215;</button>
+        #{message}
+      </div>
+    HTML
+    html.html_safe
+  end
 end

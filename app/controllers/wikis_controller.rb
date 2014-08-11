@@ -18,7 +18,7 @@ class WikisController < ApplicationController
   end
 
   def create
-    @wiki = current_user.wikis.build(wiki_params)
+    @wiki = current_user.original_wikis.build(wiki_params)
 
     puts "******************************"
     puts params[:wiki][:publish_type]

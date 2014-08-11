@@ -7,7 +7,7 @@
       </div>
       <div class="modal-body">
         <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-
+        <%= display_base_errors resource %>
           <div class="form-inline">
             <div class="form-group">
               <%= f.label :email, class: "sr-only" %>

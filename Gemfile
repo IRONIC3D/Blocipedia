@@ -20,6 +20,7 @@ gem 'redcarpet'
 gem 'pundit'
 gem 'will_paginate', '~> 3.0.5'
 gem 'stripe'
+gem 'stripe_event', '~> 1.3.0'
 
 group :production do
   gem 'pg'

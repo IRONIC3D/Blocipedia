@@ -4,7 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :wikis, dependent: :destroy
+  has_many :collaborators, dependent: :destroy
+  has_many :wikis, through: :collaborators
+  has_many :original_wikis, class_name: "Wiki", dependent: :destroy
 
   validates :first_name, presence: true
   validates :last_name, presence: true

@@ -15,7 +15,7 @@
   <% @wikis.each do |wiki| %>
     <div class="wiki row">
       <div class="spanwiki">
-        <strong><%= wiki.user.full_name %></strong>
+        <strong><%= wiki.original_user.full_name %></strong>
         <h3><%= markdown wiki.title %></h3> 
         <div class="meta">
           <%= link_to time_ago_in_words(wiki.created_at) + " ago", wiki %>

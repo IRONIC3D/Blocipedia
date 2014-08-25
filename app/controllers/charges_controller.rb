@@ -27,6 +27,7 @@ class ChargesController < ApplicationController
       currency: 'aud'
     )
 
+    current_user.update_attributes(status: "subscribed")
     flash[:success] = "Thank you"
     # redirect_to user_path(current_user)
     redirect_to wikis_path

@@ -11,9 +11,9 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery.turbolinks
+
 //= require jquery_ujs
-//= require turbolinks
+
 //= require bootstrap
 //= require bootstrap-select
 //= require bootstrap-switch

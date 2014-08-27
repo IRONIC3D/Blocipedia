@@ -29,19 +29,21 @@
             <%= f.text_area :body, rows: 5, class: "form-control" %>
           <% end %>
 
-          <!-- TODO: Check if user is paid -->
-          <%= form_group_tag(@wiki.errors[:private]) do %>
-            <%= f.label :private, class: 'checkbox' do %>
-              <%= f.check_box :private %> Make this Wiki private?
-            <% end %>
-          <% end %>
+          <% if policy(@wiki).collaborate? %>
 
-          <!-- TODO: Add policy checking -->
-          <%= form_group_tag(@wiki.errors[:private]) do %>
-            <%= f.label "Collaborate with" %>
-            <%= f.fields_for :collaborators do |builder| %>
-              <%= builder.collection_select :user_id, User.where.not(id: current_user.id), :id, :full_name, { prompt: "" } %>
+            <%= form_group_tag(@wiki.errors[:private]) do %>
+              <%= f.label :private, class: 'checkbox' do %>
+                <%= f.check_box :private %> Make this Wiki private?
+              <% end %>
             <% end %>
+
+            <%= form_group_tag(@wiki.errors[:private]) do %>
+              <%= f.label "Collaborate with" %>
+              <%= f.fields_for :collaborators do |builder| %>
+                <%= builder.collection_select :user_id, User.where.not(id: current_user.id), :id, :full_name, { prompt: "" } %>
+              <% end %>
+            <% end %>
+
           <% end %>
 
           <!--<%= form_group_tag(@wiki.errors[:scheduled]) do %>

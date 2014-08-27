@@ -1,17 +1,21 @@
 <div class="container">
-   <h1><%= markdown @wiki.title %></h1> 
+   <% if policy(@wiki).private? %>
+     <h1><%= markdown @wiki.title %></h1> 
 
-   <p><%= markdown @wiki.body %></p>
+     <p><%= markdown @wiki.body %></p>
 
-    <p>
-      <b>Name:</b>
-      <%= @wiki.original_user.full_name %>
-      </p>
+      <p>
+        <b>Name:</b>
+        <%= @wiki.original_user.full_name %>
+        </p>
 
-      <b>Collaborator:</b>
-      <%= @wiki.users.map { |u| u.full_name}.join(", ") %>
-      </p>
+        <b>Collaborator:</b>
+        <%= @wiki.users.map { |u| u.full_name}.join(", ") %>
+        </p>
 
-  <%= link_to 'Edit', edit_wiki_path(@wiki) %> |
-  <%= link_to 'Back', wikis_path %>
+    <%= link_to 'Edit', edit_wiki_path(@wiki) %> |
+    <%= link_to 'Back', wikis_path %>
+   <% else %>
+    <p><strong>YOU ARE NOT ALLOWED TO VIEW THIS WIKI</strong></p>
+   <% end %>
 </div>
